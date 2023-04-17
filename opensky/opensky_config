@@ -1,0 +1,9 @@
+opensky-feeder openskyd/latitude string <LAT>
+opensky-feeder openskyd/longitude string <LON>
+opensky-feeder openskyd/altitude string <ALT>
+opensky-feeder openskyd/dump1090branch select default
+opensky-feeder openskyd/username string <USERNAME>
+opensky-feeder openskyd/serial string <FEEDER>
+opensky-feeder openskyd/host string dump1090
+opensky-feeder openskyd/port string 30005
+
