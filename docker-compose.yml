@@ -2,7 +2,7 @@ version: '3'
 
 services:
   dump1090:
-    image: jraviles/dump1090
+    image: jraviles/dump1090:8.2
     ports:
       - 8080:8080/tcp
     devices:
@@ -10,13 +10,27 @@ services:
     restart: unless-stopped
 
   piaware:
-    # wnagele/piaware image exists on DockerHub, but doesn't support arm/v7.
-    build:
-     context: 'https://github.com/wnagele/docker-piaware.git'
+    image: wnagele/piaware:8.2
     env_file: 'flightaware_credentials.txt'
     environment:
       - BEAST_PORT_30005_TCP_ADDR=dump1090
     restart: unless-stopped
+
+  radarbox:
+    image: radarbox:latest
+    environment:
+      - DUMP1090_HOST=dump1090
+      - DUMP1090_PORT=30005
+    restart: unless-stopped
+
+  opensky:
+    image: opensky:latest
+    restart: unless-stopped
+
+  flightradar24:
+    image: flightradar24:latest
+    restart: unless-stopped
+
 
   adsbexchange-feed:
     environment:
