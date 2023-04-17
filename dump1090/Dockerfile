@@ -1,4 +1,4 @@
-FROM debian:latest as builder
+FROM debian:bullseye as builder
 
 RUN apt update && \
     apt install -y \
@@ -16,10 +16,10 @@ RUN apt update && \
 
 RUN git clone https://github.com/flightaware/dump1090.git /dump1090
 WORKDIR /dump1090
-RUN git checkout 849a3b73299b4f56620ab16a6b62d88e17f35608
+RUN git checkout v8.2
 RUN make
 
-FROM debian:latest
+FROM debian:bullseye
 
 RUN apt update && \
     apt install -y \
