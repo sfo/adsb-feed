@@ -4,7 +4,6 @@ services:
   dump1090:
     build:
       context: dump1090
-      dockerfile: Dockerfile
     ports:
       - 8080:8080/tcp
     devices:
@@ -14,7 +13,6 @@ services:
   piaware:
     build:
       context: piaware
-      dockerfile: Dockerfile
     env_file: 'flightaware_credentials.txt'
     environment:
       - BEAST_PORT_30005_TCP_ADDR=dump1090
@@ -32,7 +30,8 @@ services:
     restart: unless-stopped
 
   flightradar24:
-    image: flightradar24:latest
+    build:
+      context: flightradar24
     restart: unless-stopped
 
 
