@@ -19,7 +19,9 @@ services:
     restart: unless-stopped
 
   radarbox:
-    image: radarbox:latest
+    build:
+      context: radarbox
+    env_file: 'radarbox_credentials.txt'
     environment:
       - DUMP1090_HOST=dump1090
       - DUMP1090_PORT=30005

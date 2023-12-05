@@ -1,4 +1,4 @@
-FROM debian:bullseye
+FROM debian:bookworm
 
 RUN apt update \
  && apt install -y \
@@ -13,4 +13,4 @@ RUN apt update \
         rbfeeder \
  && rm -rf /var/lib/apt/lists/*
 
-ENTRYPOINT ["sh", "-c", "rbfeeder --set-network-mode on --set-network-host ${DUMP1090_HOST} --set-network-port ${DUMP1090_PORT} --set-network-protocol beast"]
+ENTRYPOINT ["sh", "-c", "rbfeeder --set-network-mode on --set-network-host ${DUMP1090_HOST} --set-network-port ${DUMP1090_PORT} --set-network-protocol beast --setkey ${RADARBOX_KEY}"]
