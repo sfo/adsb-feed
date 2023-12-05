@@ -1,0 +1,3 @@
+[submodule "piaware"]
+	path = piaware
+	url = git@github.com:sfo/docker-piaware.git
