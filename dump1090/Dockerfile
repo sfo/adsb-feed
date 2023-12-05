@@ -1,7 +1,7 @@
-FROM debian:bullseye as builder
+FROM debian:bookworm as builder
 
-RUN apt update && \
-    apt install -y \
+RUN apt-get update && \
+    apt-get install -y \
       build-essential \
       debhelper \
       fakeroot \
@@ -16,16 +16,16 @@ RUN apt update && \
 
 RUN git clone https://github.com/flightaware/dump1090.git /dump1090
 WORKDIR /dump1090
-RUN git checkout v8.2
+RUN git checkout v9.0
 RUN make
 
-FROM debian:bullseye
+FROM debian:bookworm
 
-RUN apt update && \
-    apt install -y \
+RUN apt-get update && \
+    apt-get install -y \
       libbladerf2 \
       libhackrf0 \
-      liblimesuite20.10-1 \
+      liblimesuite22.09-1 \
       libncurses6 \
       librtlsdr0 \
       nginx && \

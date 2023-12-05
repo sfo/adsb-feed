@@ -2,7 +2,9 @@ version: '3'
 
 services:
   dump1090:
-    image: jraviles/dump1090:8.2
+    build:
+      context: dump1090
+      dockerfile: Dockerfile
     ports:
       - 8080:8080/tcp
     devices:
